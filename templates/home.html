@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Home</title>
+  </head>
+  <body>
+    {% extends "template.html" %}
+    {% block content %}
+    
+    <h1> Bienvenido a la pagina principal!  </h1>
+    <p> Aqui veras informacion importante todo el tiempo productos noticias clima etc etc etc </p>
+
+    
+    <script>
+  
+      function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('txt').innerHTML =
+        h + ":" + m + ":" + s;
+        var t = setTimeout(startTime, 500);
+      }
+      function checkTime(i) {
+        if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+        return i;
+      }
+      </script>
+
+<body onload="startTime()">
+
+  <font size="180"> <div id="txt"></div>  </font>
+
+  <img src="/static/graf1.png" alt="Gregorio" width="800" height="320">
+  <img src="/static/familia.png" alt="Arbolito"width="800" height="320">
+    
+    {% endblock %}
+  </body>
+</html>

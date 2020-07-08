@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+ <head>
+   <meta charset="utf-8">
+   <title>Flask Parent Template</title>
+   <link rel="stylesheet" href="{{ url_for('static',     filename='css/template.css') }}">
+ </head>
+ <body>
+    <header>
+      <div class="container">
+        <script>
+          function startTime() {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('txt').innerHTML =
+            h + ":" + m + ":" + s;
+            var t = setTimeout(startTime, 500);
+          }
+          function checkTime(i) {
+            if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+            return i;
+          }
+          </script>
+    <body onload="startTime()">
+    <font size="180"> <div id="txt"></div>  </font>
+    </div>
+      <div class="container">
+        <h1 class="logo">GLC Command Center</h1>
+        <strong><nav>
+          <ul class="menu">
+            <li><a href="{{ url_for('home') }}">Inicio</a></li>
+            <li><a href="{{ url_for('about') }}">Sobre Nosotros</a></li>
+            <li><a href="{{ url_for('lucas') }}">Lucas Zuccarelli</a></li>
+            <li><a href="{{ url_for('sebastian') }}">Sebastian Pinilla</a></li>
+            <li><a href="{{ url_for('brian') }}">Brian Salgado</a></li>
+            <li><a href="{{ url_for('gaspar') }}">Gaspar Monte</a></li>
+            <li><a href="{{ url_for('marcelo') }}">Marcelo Irigoitia Rojas</a></li>
+            <li><a href="{{ url_for('compras') }}">Compras</a></li>
+            <li><a href="{{ url_for('configuracion') }}">Configuracion</a></li>
+            <li><a href="{{ url_for('productos') }}">Productos</a></li>
+            <li><a href="{{ url_for('hora') }}">Hora</a></li>
+            <li><a href="{{ url_for('tabla') }}">Tablas</a></li>
+          </ul>
+        </nav></strong>
+      </div>
+    </header>
+    
+    {% block content %}
+    {% endblock %}
+    
+ </body>
+</html>
